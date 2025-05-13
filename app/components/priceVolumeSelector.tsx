@@ -40,7 +40,7 @@ export default function PriceVolumeSelector({
             value={volume}
             onChange={(e) => setVolume(Math.max(1, Number(e.target.value)))}
             min="1"
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-gray-300 rounded-md text-black"
           />
         </div>
 
