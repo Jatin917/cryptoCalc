@@ -8,10 +8,10 @@ interface PriceVolumeSelectorProps {
 }
 
 export default function PriceVolumeSelector({
-  currencies,
+  // currencies,
   volume,
-  currency,
-  setCurrency,
+  // currency,
+  // setCurrency,
   setVolume,
   className = "",
 }: PriceVolumeSelectorProps) {

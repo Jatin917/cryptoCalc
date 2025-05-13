@@ -121,7 +121,7 @@ export default function Home() {
     try {
       const [buyingPriceRes, sellingPriceRes] = await Promise.all([
         fetch(`/api/binance?time=${fromTimeInUnix}`),
-        fetch(`/api/binance?time=${toTimeInUnix}`),
+        fetch(`/api/binance?time=${to}`),
       ]);
 
       const [buyingPrice, sellingPrice] = await Promise.all([

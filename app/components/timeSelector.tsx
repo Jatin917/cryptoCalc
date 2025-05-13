@@ -29,7 +29,7 @@ export default function TradeTimeSelector({
   useEffect(() => {
     if (!buyingTime) onBuyTimeChange(now.toISOString());
     if (!sellingTime) onSellTimeChange(now.toISOString());
-  }, []);
+  }, [buyingTime, now, onBuyTimeChange, onSellTimeChange, sellingTime]);
 
 const updateLocalDateTime = (isoString: string) => {
   const date = new Date(isoString);
