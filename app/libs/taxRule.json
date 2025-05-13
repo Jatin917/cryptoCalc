@@ -1,0 +1,151 @@
+{
+    "india": {
+      "flatTaxRate": 0.30,
+      "tdsRate": 0.01,
+      "longTermThresholdMonths": 36,
+      "longTermRate": 0.20,
+      "shortTermRate": 0.30,
+      "note": "No deductions or loss set-off allowed as per Indian crypto law."
+    },
+    "united_states": {
+      "shortTermRate": 0.20,
+      "longTermRate": 0.15,
+      "longTermThresholdMonths": 12,
+      "note": "Crypto taxed as property, short-term gains taxed as regular income."
+    },
+    "united_kingdom": {
+      "shortTermRate": 0.20,
+      "longTermRate": 0.10,
+      "longTermThresholdMonths": 12,
+      "capitalGainsExemption": 12300,
+      "note": "Crypto taxed under capital gains tax rules."
+    },
+    "canada": {
+      "shortTermRate":  0.20, 
+      "longTermRate": 0.50,
+      "longTermThresholdMonths": 12,
+      "note": "Cryptos taxed as income if traded frequently."
+    },
+    "australia": {
+      "shortTermRate": 0.45,
+      "longTermRate": 0.15,
+      "longTermThresholdMonths": 12,
+      "note": "Crypto is taxed under capital gains tax."
+    },
+    "germany": {
+      "flatTaxRate": 0.26,
+      "longTermThresholdMonths": 12,
+      "longTermRate": 0.00,
+      "note": "Crypto gains are tax-free after 1 year of holding."
+    },
+    "france": {
+      "flatTaxRate": 0.30,
+      "note": "Flat tax for crypto profits. No long-term benefit."
+    },
+    "switzerland": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is tax-free for personal use, taxed on income only."
+    },
+    "singapore": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is not taxed on capital gains or income."
+    },
+    "japan": {
+      "shortTermRate": 0.15,
+      "longTermRate": 0.00,
+      "note": "Crypto profits taxed as miscellaneous income."
+    },
+    "south_korea": {
+      "flatTaxRate": 0.20,
+      "note": "Crypto profits are taxed under income tax law."
+    },
+    "brazil": {
+      "flatTaxRate": 0.15,
+      "note": "Crypto taxed on long-term capital gains."
+    },
+    "mexico": {
+      "shortTermRate": 0.35,
+      "longTermRate": 0.30,
+      "longTermThresholdMonths": 12,
+      "note": "Crypto is taxed under general income tax rules."
+    },
+    "spain": {
+      "shortTermRate": 0.19,
+      "longTermRate": 0.10,
+      "longTermThresholdMonths": 12,
+      "note": "Crypto taxed as capital gains in Spain."
+    },
+    "italy": {
+      "shortTermRate": 0.26,
+      "longTermRate": 0.12,
+      "note": "Crypto profits are taxable as income in Italy."
+    },
+    "netherlands": {
+      "flatTaxRate": 0.30,
+      "note": "Crypto treated as an asset under wealth tax law."
+    },
+    "portugal": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto profits are exempt from tax for individuals, except in cases of professional activity."
+    },
+    "new_zealand": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is not taxed unless part of a business income."
+    },
+    "south_africa": {
+      "shortTermRate": 0.45,
+      "longTermRate": 0.18,
+      "longTermThresholdMonths": 12,
+      "note": "Crypto is taxed under income tax law."
+    },
+    "sweden": {
+      "flatTaxRate": 0.30,
+      "note": "Crypto profits are taxed under capital gains tax."
+    },
+    "norway": {
+      "flatTaxRate": 0.22,
+      "note": "Crypto profits taxed as capital gains."
+    },
+    "finland": {
+      "flatTaxRate": 0.30,
+      "note": "Crypto taxed as capital gains."
+    },
+    "denmark": {
+      "flatTaxRate": 0.27,
+      "note": "Crypto taxed as capital gains, up to 27%."
+    },
+    "poland": {
+      "flatTaxRate": 0.19,
+      "note": "Crypto profits are treated as capital gains."
+    },
+    "luxembourg": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is tax-free for private individuals."
+    },
+    "argentina": {
+      "flatTaxRate": 0.15,
+      "note": "Crypto profits taxed under capital gains tax."
+    },
+    "colombia": {
+      "shortTermRate": 0.33,
+      "longTermRate": 0.10,
+      "note": "Crypto taxed under income tax law."
+    },
+    "united_arab_emirates": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is tax-free."
+    },
+    "saudi_arabia": {
+      "flatTaxRate": 0.00,
+      "note": "Crypto is tax-free."
+    },
+    "hong_kong": {
+      "flatTaxRate": 0.00,
+      "note": "No tax on crypto unless it’s business-related."
+    },
+    "malaysia": {
+      "flatTaxRate": 0.30,
+      "note": "Crypto taxed as income."
+    }
+  }
+  
