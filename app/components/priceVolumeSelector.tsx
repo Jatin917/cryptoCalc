@@ -1,8 +1,8 @@
 interface PriceVolumeSelectorProps {
-  currencies: string[];
+  // currencies: string[];
   volume: number;
-  currency: string;
-  setCurrency: (currency: string) => void;
+  // currency: string;
+  // setCurrency: (currency: string) => void;
   setVolume: (volume: number) => void;
   className?: string;
 }

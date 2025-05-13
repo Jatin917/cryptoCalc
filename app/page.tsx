@@ -1,12 +1,26 @@
 "use client";
-import './globals.css'
+import './globals.css';
 import { useEffect, useState } from 'react';
 import CountrySelector from './components/countrySelector';
 import ResultsDisplay from './components/resultDisplay';
 import taxRuleData from './libs/taxRule.json';
-import currencyData from './libs/supportedCurrency.json';
+// import currencyData from './libs/supportedCurrency.json';
 import TradeTimeSelector from './components/timeSelector';
 import PriceVolumeSelector from './components/priceVolumeSelector';
+
+interface TaxRule {
+  flatTaxRate?: number;
+  tdsRate?: number;
+  longTermThresholdMonths?: number;
+  longTermRate?: number;
+  shortTermRate?: number;
+  capitalGainsExemption?: number;
+  note: string;
+}
+
+interface TaxRuleData {
+  [country: string]: TaxRule;
+}
 
 interface Results {
   grossProfit: number;
@@ -25,15 +39,15 @@ interface Results {
 }
 
 export default function Home() {
-  const [country, setCountry] = useState('');
+  const [country, setCountry] = useState<string>('');
   const [results, setResults] = useState<Results | null>(null);
-  const [toTime, setToTime] = useState('');
-  const [fromTime, setFromTime] = useState('');
+  const [toTime, setToTime] = useState<string>('');
+  const [fromTime, setFromTime] = useState<string>('');
   const [volume, setVolume] = useState<number>(1);
   const [buyPrice, setBuyPrice] = useState<number>(0);
   const [sellPrice, setSellPrice] = useState<number>(0);
-  const [currency, setCurrency] = useState<string>('btc');
-  const [isLoading, setIsLoading] = useState(false);
+  // const [currency, setCurrency] = useState<string>('btc');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function getUnixTimeFromIST(istDateTime: string): number {
     const istOffset = 5.5 * 60 * 60 * 1000;
@@ -41,13 +55,13 @@ export default function Home() {
     return istDate.getTime();
   }
 
-  const calculateHoldingPeriod = (start: string, end: string) => {
+  const calculateHoldingPeriod = (start: string, end: string): number => {
     const startTime = new Date(start).getTime();
     const endTime = new Date(end).getTime();
     return Math.abs(endTime - startTime) / (30 * 24 * 60 * 60 * 1000);
   };
 
-  const calculateProfit = () => {
+  const calculateProfit = (): void => {
     if (!country) {
       alert("Please select a country");
       return;
@@ -73,10 +87,12 @@ export default function Home() {
     }
 
     const holdingPeriodMonths = calculateHoldingPeriod(fromTime, toTime);
-    const isLongTerm = holdingPeriodMonths >= taxRuleData[country].longTermThresholdMonths;
+    const rules: TaxRule = (taxRuleData as TaxRuleData)[country];
+
+    const isLongTerm = holdingPeriodMonths >= (rules.longTermThresholdMonths ?? 0);
     const taxRate = isLongTerm
-      ? taxRuleData[country].longTermRate
-      : taxRuleData[country].shortTermRate ?? taxRuleData[country].flatTaxRate;
+      ? rules.longTermRate ?? rules.flatTaxRate ?? 0
+      : rules.shortTermRate ?? rules.flatTaxRate ?? 0;
 
     const totalTaxes = grossProfit * taxRate;
     const netProfit = grossProfit - totalTaxes;
@@ -98,7 +114,7 @@ export default function Home() {
     });
   };
 
-  const getBuyingAndSellingPrice = async () => {
+  const getBuyingAndSellingPrice = async (): Promise<void> => {
     if (!country) {
       alert("Please select a country first");
       return;
@@ -121,7 +137,7 @@ export default function Home() {
     try {
       const [buyingPriceRes, sellingPriceRes] = await Promise.all([
         fetch(`/api/binance?time=${fromTimeInUnix}`),
-        fetch(`/api/binance?time=${to}`),
+        fetch(`/api/binance?time=${toTimeInUnix}`),
       ]);
 
       const [buyingPrice, sellingPrice] = await Promise.all([
@@ -131,7 +147,7 @@ export default function Home() {
 
       setBuyPrice(Number(buyingPrice[0][1]));
       setSellPrice(Number(sellingPrice[0][1]));
-      calculateProfit()
+      calculateProfit();
     } catch (err) {
       console.error("Error fetching price data:", err);
       alert("Failed to fetch price data");
@@ -166,11 +182,12 @@ export default function Home() {
           />
 
           <PriceVolumeSelector
-            currencies={currencyData}
+            // currencies={currencyData}
             volume={volume}
-            currency={currency}
-            setCurrency={setCurrency}
+            // currency={currency}
+            // setCurrency={setCurrency}
             setVolume={setVolume}
+            className=''
           />
 
           <button
