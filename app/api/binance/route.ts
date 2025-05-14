@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Invalid 'time' format" }, { status: 400 });
   }
 
-  const res = await fetch(`https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1m&startTime=${unixTimeMs}&limit=1`);
+  const res = await fetch(`https://testnet.binancefuture.com/fapi/v1/klines?symbol=BTCUSDT&interval=1m&startTime=${unixTimeMs}&limit=1`);
   const data = await res.json();
   return NextResponse.json(data);
 }
